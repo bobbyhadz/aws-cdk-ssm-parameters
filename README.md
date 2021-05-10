@@ -1,8 +1,7 @@
-# Article name here
+# Using SSM Parameters in AWS CDK - Complete Guide
 
 A repository for an article on
-[bobbyhadz.com](https://bobbyhadz.com/blog/aws-s3-presigned-url-react)
-`<- Update Link`
+[bobbyhadz.com](https://bobbyhadz.com/blog/aws-cdk-ssm-parameters)
 
 ## How to Use
 
@@ -14,17 +13,30 @@ A repository for an article on
 npm install
 ```
 
-3. Create the CDK stack
+3. Create the secure string parameter we'll import the stack:
 
 ```bash
-npx cdk deploy
+aws ssm put-parameter \
+	--name "/my-site/db-password" \
+	--value "dogsandcats123" \
+	--type "SecureString"
 ```
 
-4. Open the AWS CloudFormation Console and the stack should be created in your
-   default region
-
-5. Cleanup
+4. Create the CDK stack
 
 ```bash
+npx cdk deploy \
+  --outputs-file ./cdk-outputs.json
+```
+
+5. Open the AWS CloudFormation Console and the stack should be created in your
+   default region
+
+6. Cleanup - delete the stack and the secure SSM parameter:
+
+```bash
+aws ssm delete-parameter \
+	--name "/my-site/db-password"
+
 npx cdk destroy
 ```
