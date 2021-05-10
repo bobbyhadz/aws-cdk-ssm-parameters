@@ -35,8 +35,8 @@ npx cdk deploy \
 6. Cleanup - delete the stack and the secure SSM parameter:
 
 ```bash
+npx cdk destroy
+
 aws ssm delete-parameter \
 	--name "/my-site/db-password"
-
-npx cdk destroy
 ```

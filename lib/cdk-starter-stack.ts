@@ -45,7 +45,7 @@ export class CdkStarterStack extends cdk.Stack {
     const importedParam3 = ssm.StringParameter.fromSecureStringParameterAttributes(
       this,
       'imported-param-3',
-      {parameterName: '/my-app/dev/db-password', version: 1, simpleName: false},
+      {parameterName: '/my-app/dev/db-password', version: 1},
     );
 
     new cdk.CfnOutput(this, 'imported-param-1-value', {
