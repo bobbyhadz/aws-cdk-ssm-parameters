@@ -3,6 +3,8 @@
 A repository for an article on
 [bobbyhadz.com](https://bobbyhadz.com/blog/aws-cdk-ssm-parameters)
 
+> If you use CDK v1, switch to the cdk-v1 branch
+
 ## How to Use
 
 1. Clone the repository
@@ -25,7 +27,7 @@ aws ssm put-parameter \
 4. Create the CDK stack
 
 ```bash
-npx cdk deploy \
+npx aws-cdk deploy \
   --outputs-file ./cdk-outputs.json
 ```
 
@@ -35,7 +37,7 @@ npx cdk deploy \
 6. Cleanup - delete the stack and the secure SSM parameter:
 
 ```bash
-npx cdk destroy
+npx aws-cdk destroy
 
 aws ssm delete-parameter \
 	--name "/my-site/db-password"
