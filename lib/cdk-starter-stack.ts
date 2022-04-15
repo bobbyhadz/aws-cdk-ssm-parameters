@@ -24,40 +24,15 @@ export class CdkStarterStack extends cdk.Stack {
       },
     );
 
-    const importedParam1 = ssm.StringParameter.fromStringParameterAttributes(
-      this,
-      'imported-param-1',
-      {
-        parameterName: emailParam.parameterName,
-        simpleName: false,
-      },
-    );
-
-    const importedParam2 = ssm.StringParameter.fromStringParameterAttributes(
-      this,
-      'imported-param-2',
-      {
-        parameterName: environmentsParam.parameterName,
-        simpleName: false,
-      },
-    );
-
-    const importedParam3 = ssm.StringParameter.fromSecureStringParameterAttributes(
-      this,
-      'imported-param-3',
-      {parameterName: '/my-app/dev/db-password', version: 1},
-    );
-
-    new cdk.CfnOutput(this, 'imported-param-1-value', {
-      value: importedParam1.stringValue,
-    });
-
-    new cdk.CfnOutput(this, 'imported-param-2-value', {
-      value: importedParam2.stringValue,
-    });
+    const importedParam =
+      ssm.StringParameter.fromSecureStringParameterAttributes(
+        this,
+        'imported-param-3',
+        {parameterName: '/my-app/dev/db-password', version: 1},
+      );
 
     new cdk.CfnOutput(this, 'imported-param-3-value', {
-      value: importedParam3.parameterName,
+      value: importedParam.parameterName,
     });
   }
 }
