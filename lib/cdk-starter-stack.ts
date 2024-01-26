@@ -9,7 +9,6 @@ export class CdkStarterStack extends cdk.Stack {
       parameterName: '/my-site/alerts-email-dev',
       stringValue: 'dev-email@example.com',
       description: 'the email used for alerting for dev',
-      type: ssm.ParameterType.STRING,
       tier: ssm.ParameterTier.STANDARD,
       allowedPattern: '.*',
     });
